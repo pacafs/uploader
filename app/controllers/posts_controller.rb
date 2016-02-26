@@ -3,7 +3,8 @@ class PostsController < ApplicationController
   respond_to :json
 
   def index
-    @posts = Post.all
+    @posts  = Post.all
+    @images = @posts.collect{ |p| p.pictures }
 
     respond_to do |format|
       format.html
@@ -39,7 +40,7 @@ class PostsController < ApplicationController
             @post.pictures.create(image: image)
           }
         end
-        format.html { redirect_to posts_path, notice: 'Post was successfully created.' }
+        format.html { redirect_to post_path(@post), notice: 'Post was successfully created.' }
         format.json { render json: @post, status: :created, location: @post }
       else
         format.html { render action: "new" }
@@ -54,12 +55,12 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.update_attributes(post_params)
-        # if params[:images]
-        #   # The magic is here ;)
-        #   params[:images].each { |image|
-        #     @post.pictures.create(image: image)
-        #   }
-        # end
+        if params[:images]
+          # The magic is here ;)
+          params[:images].each { |image|
+            @post.pictures.create(image: image)
+          }
+        end
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }
         format.json { head :no_content }
       else
@@ -86,5 +87,3 @@ class PostsController < ApplicationController
   end
 
 end
-
-

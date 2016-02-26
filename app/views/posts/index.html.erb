@@ -2,3 +2,13 @@
 
 <br>
 <hr>
+
+<% @posts.map(&:pictures).each do |picture|  %>
+	<% picture.each do |p| %>
+		<%= link_to(post_path(picture.post_id)) do %>
+			<%=  image_tag(p.image, width: "350", height: "200") %>
+		<% end %>
+	<% end %>
+<% end %>
+
+
