@@ -1,0 +1,9 @@
+<h2>Content:</h2>
+<h3><%= post.content %></h3>
+<% if post.pictures.any? %>
+	<% post.pictures.each do |p| %>
+	<%= image_tag(p.url) %>
+	<% end %>
+<% end %>
+<hr>
+
