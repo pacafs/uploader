@@ -4,6 +4,6 @@
 <p><%= @post.content %></p>
 
 <% @post.pictures.each do |picture|  %>
-	<%=  image_tag(picture.image, width: "350", height: "200") %>
+	<%=  image_tag(picture.image.large) %>
 <% end %>
 

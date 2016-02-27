@@ -5,10 +5,6 @@
 
 <% @posts.map(&:pictures).each do |picture|  %>
 	<% picture.each do |p| %>
-		<%= link_to(post_path(picture.post_id)) do %>
-			<%=  image_tag(p.image, width: "350", height: "200") %>
-		<% end %>
+		<%= link_to "#{image_tag p.image.medium}".html_safe, post_path(p.post_id) %>
 	<% end %>
 <% end %>
-
-

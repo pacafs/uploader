@@ -2,7 +2,8 @@
   <%= p.label :content %>
   <%= p.text_field :content %>
   <%= p.label :pictures %>
- <%= file_field_tag "pictures[]", type: :file, multiple: true %>
-
+  <%= file_field_tag "pictures[]", type: :file, multiple: true %>
   <%= p.submit "Submit" %>
 <% end %>
+
+

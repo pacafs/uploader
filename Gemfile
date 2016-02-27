@@ -36,6 +36,13 @@ group :development, :test do
   gem 'sqlite3'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+
+  gem 'thin'
+
+  gem "better_errors"
+  
+  gem 'dotenv-rails'
+
 end
 
 group :production do
@@ -52,7 +59,12 @@ group :development do
   gem 'spring'
 end
 
+
 gem 'carrierwave', github:'carrierwaveuploader/carrierwave'
+
+gem 'carrierwave-aws'
+
+gem 'rmagick'
 
 gem 'responders', '~> 2.0' 
 
