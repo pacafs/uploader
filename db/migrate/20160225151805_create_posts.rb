@@ -6,3 +6,4 @@ class CreatePosts < ActiveRecord::Migration
     end
   end
 end
+

@@ -7,20 +7,19 @@ class ImageUploader < CarrierWave::Uploader::Base
   # include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
-  # storage :file
-  storage :aws
+   storage :aws
+  # storage :aws
   # storage :fog
 
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
-  # process :sepiafy   => 0.8
+  process :sepiafy   => 0.8
   # process :raisefy   => [10,10,true]
   # process :blurify   => 0.50
-  # process :flop
-  # process :oil_paint => 6
-  # process :frame
+  process :flop
+  process :frame
   # process :shearify  => [10.0,5.0]
 
 
@@ -48,12 +47,6 @@ class ImageUploader < CarrierWave::Uploader::Base
     end
   end
 
-  def oil_paint(amount)
-    manipulate! do |img|
-      img.oil_paint(amount)
-    end
-  end
-
   def frame
     manipulate! do |img|
       img.frame
@@ -65,6 +58,7 @@ class ImageUploader < CarrierWave::Uploader::Base
       img.shear(x,y)
     end
   end
+
 
 
   # Create different versions of your uploaded files:
